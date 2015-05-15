@@ -1,0 +1,63 @@
+<div class="container">
+    <div class=row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Inloggen</h1>
+                </div>
+                <div class="panel-body">
+                    <form 
+                        role="form"
+                        data-bind="submit: formSubmitted">
+                        <div 
+                            class="form-group" 
+                            data-bind="css: { 'has-error': errors().email }">
+                            <label 
+                                class="control-label" 
+                                for="email">e-mail</label>
+                            <input 
+                                id="email"
+                                autofocus
+                                type="text" 
+                                placeholder="e-mail adres" 
+                                class="form-control" 
+                                data-bind="value: email"/>
+                            <!-- ko foreach: errors().email -->
+                            <span 
+                                class="help-block" 
+                                data-bind="text: $data" />
+                            <!-- /ko -->
+                        </div>
+                        <div 
+                            class="form-group"
+                            data-bind="css: { 'has-error': errors().password }">
+                            <label 
+                                class="control-label" 
+                                for="password">wachtwoord</label>
+                            <input 
+                                id="password"
+                                type="password" 
+                                placeholder="wachtwoord" 
+                                class="form-control"
+                                data-bind="value: password" />
+                            <!-- ko foreach: errors().password -->
+                            <span 
+                                class="help-block" 
+                                data-bind="text: $data" />
+                            <!-- /ko -->
+                        </div>
+                        <div class="form-group">
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary">Inloggen</button>
+                            <button type="button"
+                                type="button"
+                                class="btn btn-link"
+                                data-bind="click: resetPasswordButtonClicked">Wachtwoord vergeten</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

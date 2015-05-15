@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title" data-bind="text: title"></h2>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <!-- ko foreach:photos -->
+                    <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 condensed">
+                        <a class="thumbnail condensed" data-bind="click: $root.photoClicked">
+                            <img 
+                                src="http://placehold.it/200/fff/&text=loading"
+                                data-bind="attr: {'data-original': thumbnail_small}"
+                                class="lazy img-responsive" />
+                        </a>
+                    </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>

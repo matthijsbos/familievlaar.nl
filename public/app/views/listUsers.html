@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>e-mail</th>
+                <th>administrator</th>
+                <th>aangemaakt</th>
+            </tr> 
+        </thead>
+        <tbody 
+            data-bind="foreach: users">
+            <tr
+                data-bind="click: $root.userClicked">
+                <td 
+                    data-bind="text:email" />
+                <td 
+                    data-bind="text:admin == 1 ? 'ja' : 'nee'" />
+                <td 
+                    data-bind="text:created_at" />
+            </tr>
+        </tbody>
+    </table>
+</div>

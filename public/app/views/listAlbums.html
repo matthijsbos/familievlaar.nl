@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Fotoalbums</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row"
+                data-bind="foreach:albums">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div 
+                        data-bind="click: $root.albumClicked"
+                        class="thumbnail">
+                        <img 
+                            src="http://hqwallpapersplus.com/wp-content/uploads/2013/09/Album-Pictures-7.jpg"
+                            class="img-responsive" />
+                        <div class="caption">
+                            <span data-bind="text:title" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

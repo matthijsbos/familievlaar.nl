@@ -1,0 +1,98 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9" id="photoColumn">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="text-align:center">
+                        <div id="photoDiv"
+                            style="width:auto; height: auto; display:inline-block; position:relative">
+                            <img
+                                id="photo" 
+                                class="img-responsive" 
+                                data-bind="attr: { src: imageUrl }, click: $root.photoClicked" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Gegevens</h3>
+                </div>
+                <div class="panel-body">
+                    <p data-bind="text: description"></p>
+                </div>
+            </div>
+            <div
+                data-bind="visible: coordinates" 
+                class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Kaart</h3>
+                </div>
+                <div class="panel-body">
+                    <a target="_blank"href="http://maps.google.com/maps?&z=10&q=36.26577+-92.54324&ll=36.26577+-92.54324">
+                        <img class="img-responsive"
+                            src="http://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&size=300x300&zoom=14&markers=color:red%7C40.714728,-73.998672" />
+                    </a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Opmerkingen</h3>
+                </div>
+                <div data-bind="visible: comments().length <= 0" class="panel-body">
+                    <p>
+                    Nog geen opmerkingen geplaatst
+                    </p>
+                </div>
+                <table class="table" data-bind="foreach: comments">
+                    <tr>
+                        <td>test</td>
+                    </tr>
+                </table>
+                <div class="panel-footer">
+                    <form role="form"
+                        data-bind="submit: commentFormSubmitted">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="2" />
+                        </div>
+                        <div class="form-group">
+                            <button
+                                type="submit"
+                                class="btn btn-default">Plaats opmerking</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- quick fix to prevent bottom being hidden by bottom navbar -->
+    <br/>
+    <br/>
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <a class="btn btn-default navbar-btn"
+                data-bind="attr: {disabled: !prevPhotoId()}, click: prevButtonClicked">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="hidden-xs hidden-sm"> Vorige</span>
+            </a>
+            <a class="btn btn-default navbar-btn"
+                data-bind="attr: {disabled: !nextPhotoId()}, click: nextButtonClicked">
+                <span class="hidden-xs hidden-sm">Volgende </span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            <a data-bind="attr: {href: originalUrl }" 
+                class="btn btn-default navbar-btn ">
+                <span class="glyphicon glyphicon-eye-open"></span>
+                <span class="hidden-xs hidden-sm"> Origineel</span>
+            </a>
+            <a data-bind="attr: {href: downloadUrl }" 
+                class="btn btn-default navbar-btn ">
+                <span class="glyphicon glyphicon-download"></span>
+                <span class="hidden-xs hidden-sm"> Downloaden</span>
+            </a>
+        </div>
+    </nav>
+</div>

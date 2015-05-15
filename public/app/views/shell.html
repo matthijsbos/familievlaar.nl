@@ -1,0 +1,65 @@
+﻿<div>
+    <nav 
+        class="navbar navbar-default" 
+        role="navigation" 
+        data-bind="css: { transparent: transparentNavbar }">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button 
+                    type="button" 
+                    class="navbar-toggle" 
+                    data-toggle="collapse" 
+                    data-target="#menu">
+                    menu
+                    <!--
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    -->
+                </button>
+                <a class="navbar-brand" href="#" data-bind="text:title"/>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div 
+                class="collapse navbar-collapse" 
+                id="menu">
+                <ul class="nav navbar-nav navbar-right"
+                    data-bind="visible: !login()">
+                    <li><a href="#login">Inloggen</a></li>
+                </ul>
+                <ul 
+                    data-bind="if: login"
+                    class="nav navbar-nav">
+                    <li><a href="#albums">Fotoalbums</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" 
+                    data-bind="if: login">
+                    <li>
+                        <p  
+                           class="navbar-text" />
+                    </li>
+                    <li>
+                        <a data-bind="text: login().email"
+                            href="#users"/>
+                    </li>
+                    <li><a href="#logout">Uitloggen</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div 
+        data-bind="if: error"
+        class="container">
+        <div 
+            class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <strong>Error! </strong><span data-bind="text:error"/>
+         </div>
+              
+    </div>
+    <div 
+        class="container page-host" 
+        data-bind="router: { transition:'entrance' }">
+    </div>
+</div>

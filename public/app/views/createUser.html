@@ -1,0 +1,52 @@
+<div class="container">
+    <form 
+       role="form" 
+       data-bind="submit: formSubmitted">
+        <h1>Nieuwe gebruiker</h1>
+        <div 
+            class="form-group"
+            data-bind="css: {'has-error': errors().email}">
+            <label>e-mail adres</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                data-bind="value: email"/> 
+            <!-- ko foreach: errors().email -->
+            <span 
+                class="help-block" 
+                data-bind="text: $data" />
+            <!-- /ko -->
+        </div>
+        <div 
+            class="form-group"
+            data-bind="css: {'has-error': errors().password}">
+            <label>wachtwoord</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                data-bind="value: password"/> 
+            <!-- ko foreach: errors().password -->
+            <span 
+                class="help-block" 
+                data-bind="text: $data" />
+            <!-- /ko -->
+        </div>
+        <div 
+            class="checkbox"
+            data-bind="css: {'has-error': errors().admin}">
+            <label>administrator
+                <input 
+                    type="checkbox" 
+                    data-bind="checked: admin"/> 
+            </label>
+            <!-- ko foreach: errors().admin -->
+            <span 
+                class="help-block" 
+                data-bind="text: $data" />
+            <!-- /ko -->
+        </div>
+        <button 
+            type="submit" 
+            class="btn btn-primary">Aanmaken</button>
+    </div>
+</div>

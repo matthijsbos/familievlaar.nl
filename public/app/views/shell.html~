@@ -1,0 +1,33 @@
+﻿<div>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Familie Vlaar</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">test</p></li>
+                <li>
+                <a class="btn btn-default navbar-btn" href="#login">Uitloggen</a>
+                </li>
+            </ul>
+            <div class="navbar-right" data-bind="if: login" >
+                <p class="navbar-text navbar-right">
+                    <span data-bind="text: login().email" />
+                </p>
+            </div>    
+        </div>    
+    </nav>
+    <div 
+        data-bind="if: error"
+        class="container">
+        <div 
+            class="alert alert-danger alert-dismissable">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <strong>Error! </strong><span data-bind="text:error"/>
+         </div>
+              
+    </div>
+    
+    <div 
+        class="container page-host" 
+        data-bind="router: { transition:'entrance' }">
+    </div>
+</div>
