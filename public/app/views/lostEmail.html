@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Stuur e-mail opnieuw</h1>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Indien u uw e-mail om in te loggen bent verloren kunt u
+                        eenvoudig een nieuwe ontvangen. 
+                   </p>
+                   <p>
+                        Na het invullen van onderstaand formulier ontvangt u
+                        een nieuwe e-mail op het door u opgegeven e-mail adres. 
+                        Deze e-mail bevat een link. Door op deze link te klikken
+                        wordt u automatisch op de website ingelogd. 
+                   </p>
+                    <form 
+                        role="form" 
+                        data-bind="submit: formSubmitted">
+                        <div 
+                            class="form-group" >
+                            <label 
+                                class="control-label" 
+                                for="email">E-mail adres</label>
+                            <input 
+                                id="email"
+                                autofocus
+                                type="text" 
+                                placeholder="e-mail adres" 
+                                class="form-control" 
+                                data-bind="value: email"/>
+                        </div>
+                        <div class="form-group">
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary">Stuur e-mail opnieuw</button>
+                            <button type="button"
+                                type="button"
+                                class="btn btn-link"
+                                data-bind="click: cancelButtonClicked">annuleren</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

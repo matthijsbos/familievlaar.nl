@@ -16,12 +16,20 @@ define(['jquery', 'q'], function($, Q) {
         /*
          * ServerError represents the case in which the server could not fulfull
          * the request 
-         * http 500+, 404
+         * http 500+
          */
         this.ServerError = function() { };
         this.ServerError.prototype = new Error();
         this.ServerError.prototype.name = "ServerError";
         this.ServerError.prototype.constructor = this.ServerError;
+
+        /*
+         * NotFoundError represents a 404 case
+         */
+        this.NotFoundError = function() { };
+        this.NotFoundError.prototype = new Error();
+        this.NotFoundError.prototype.name = "NotFoundError";
+        this.NotFoundError.prototype.constructor = this.NotFoundError;
 
         /*
          * AuthenticationError represents the case in which the user is
@@ -64,6 +72,11 @@ define(['jquery', 'q'], function($, Q) {
             options = options || {};
             options.dataType = "json";
 
+            /*
+             * Create a new promise object in which the http request in 
+             * initialized. If an error occurs, the promise's reject
+             * handler is called.
+             */
             var promise = new Q.Promise(function(resolve, reject) {
                 //create the ajax request
                 var req = $.ajax(url, options);
@@ -73,21 +86,26 @@ define(['jquery', 'q'], function($, Q) {
                 });
 
                 req.fail(function(jqXHR, textStatus, errorThrown) {
+                    /*
+                     * Handle http request error response and reject 
+                     */
                     var error = null;
 
                     if (jqXHR.status == 401) {
                         error = new self.AuthenticationError();
                     } else if (jqXHR.status == 403) {
                         error = new self.AuthorizationError();
-                    } else if (jqXHR.status == 404 || jqXHR.status >= 500) {
+                    } else if (jqXHR.status >= 500) {
                         error = new self.ServerError();
+                    } else if (jqXHR.status == 404) {
+                        error = new self.NotFoundError();
                     } else if (jqXHR.status == 415 || jqXHR.status == 422) {
                         if (jqXHR.responseText) {
                             var messages = $.parseJSON(jqXHR.responseText);
                         }
                         error = new self.ValidationError(messages);
-                    } else if (textStatus == "timeout" 
-                        || textStatus == "error" || textStatus == "abort") {
+                    } else if (textStatus == "timeout" || 
+                        textStatus == "error" || textStatus == "abort") {
                         error = new self.NetworkError();
                     } else {
                         error = new Error("Unknown error");
@@ -144,6 +162,9 @@ define(['jquery', 'q'], function($, Q) {
             return postJSON(LOGIN_PATH, data);
         };
 
+        /*
+         * Gets the current user login information from the server. 
+         */
         this.currentLogin = function() {
             return getJSON(LOGIN_PATH);
         };

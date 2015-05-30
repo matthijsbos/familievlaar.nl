@@ -1,11 +1,38 @@
 <div class="container">
     <div class=row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default ">
+        <div class="col-md-4">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">Inloggen</h1>
+                    <h1 class="panel-title">Inloggen met e-mail</h1>
                 </div>
                 <div class="panel-body">
+                    <p>
+                        U kunt inloggen met behulp van de de e-mail die u hebt
+                        ontvangen. Door op de link in het e-mail bericht te 
+                        klikken krijgt u automatisch toegang tot de website.
+                    </p>
+                    <p>
+                        Indien u deze e-mail bent verloren kunt u eenvoudig een 
+                        nieuwe ontvangen met behulp van onderstaande knop.
+                    </p>
+                    <button
+                       type="button"
+                       data-bind="click: lostEmailButtonClicked"
+                       class="btn btn-primary"
+                       >Stuur e-mail opnieuw</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Inloggen met wachtwoord</h1>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Indien u een wachtwoord hebt ingesteld kunt u inloggen
+                        met behulp van onderstaand formulier.
+                    </p>
                     <form 
                         role="form"
                         data-bind="submit: formSubmitted">
@@ -14,7 +41,7 @@
                             data-bind="css: { 'has-error': errors().email }">
                             <label 
                                 class="control-label" 
-                                for="email">e-mail</label>
+                                for="email">E-mail adres</label>
                             <input 
                                 id="email"
                                 autofocus
@@ -33,7 +60,7 @@
                             data-bind="css: { 'has-error': errors().password }">
                             <label 
                                 class="control-label" 
-                                for="password">wachtwoord</label>
+                                for="password">Wachtwoord</label>
                             <input 
                                 id="password"
                                 type="password" 

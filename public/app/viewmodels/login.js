@@ -24,6 +24,9 @@ define(["plugins/router","knockout", "jquery", "backend", 'viewmodels/shell'],
         self.resetPasswordButtonClicked = function() {
             router.navigate('forgotPassword');
         };
+        self.lostEmailButtonClicked = function() {
+            router.navigate('lostEmail');
+        };
     };
 
     return model;
