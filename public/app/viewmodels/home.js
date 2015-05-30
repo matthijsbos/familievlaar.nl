@@ -11,11 +11,12 @@
             router.navigate('/albums/'+data.id); 
         };
         this.activate = function() {
-            //$.backstretch(['/img/bg2.jpg'],{ fade:1000});
-            //shell.transparentNavbar(true);
+            $.backstretch(['/img/bg2.jpg'],{ fade:1000});
+            shell.transparentNavbar(true);
         };
         this.deactivate = function() {
-            //$.backstretch(['/img/bg1.jpg'],{ fade:1000});
+            $.backstretch(['/img/bg1.jpg'],{ fade:1000});
+            shell.transparentNavbar(false);
         };
     };
 
