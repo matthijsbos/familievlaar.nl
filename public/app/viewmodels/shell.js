@@ -115,7 +115,7 @@
                 route: 'forgotPasswordComplete',
                 title: 'Wachtwoord vergeten',
                 moduleId: 'viewmodels/forgotPasswordComplete' 
-            }, { route: 'albums',       title: 'Fotoalbums',       moduleId: 'viewmodels/listAlbums' },
+            }, { route: 'albums',       title: 'Fotoalbums',       moduleId: 'viewmodels/albums' },
                 { route: 'albums/create',title: 'Nieuw fotoalbum',  moduleId: 'viewmodels/createAlbum' },
                 { route: 'albums/:albumId',   
                                          title: 'Fotoalbum',        moduleId: 'viewmodels/showAlbum' },
