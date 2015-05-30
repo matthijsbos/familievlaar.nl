@@ -7,7 +7,7 @@
         'knockout': '../lib/knockout/knockout-3.1.0',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
         'jquery': '../lib/jquery/jquery-1.9.1',
-        'jquery.ui': '../lib/jquery-ui/js/jquery-ui',
+        'jquery.ui': '../lib/jquery.ui/jquery-ui',
         'jquery.ui.widget': '../lib/jquery-file-upload/js/vendor/jquery.ui.widget',
         'jquery.ui.touch-punch': '../lib/jquery-ui.touch-punch/jquery-ui.touch-punch',
         'backstretch': '../lib/backstretch/jquery.backstretch.min',
@@ -22,6 +22,7 @@
         'unveil': '../lib/unveil/jquery.unveil',
         'tmpl': '../lib/tmpl/tmpl.min',
         'lazyload': '../lib/lazyload/jquery.lazyload.min',
+        'gridmanager': '../lib/gridmanager/js/jquery.gridmanager',
         'dropzone': '../lib/dropzone/dropzone-amd' //TODO add moxie polyfill
     },
     shim: {
