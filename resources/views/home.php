@@ -1,10 +1,9 @@
 <html>
     <head>
-        <title>Durandal</title>
+        <title>Familie Vlaar</title>
         
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -18,6 +17,7 @@
         <link rel="stylesheet" href="lib/durandal/css/durandal.css" />
         <link rel="stylesheet" href="lib/gridmanager/css/jquery.gridmanager.css" />
         <link rel="stylesheet" href="lib/jquery.ui/jquery-ui.css" />
+        <link rel="icon" type="image/png" href="img/favicon256.png" />
         
         <script type="text/javascript">
             if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
@@ -30,6 +30,9 @@
     </head>
     <body>
         <div id="applicationHost">
+            <!-- temporary content for when the app is being loaded -->
+                <img src="img/spinner.gif" />
+                Familievlaar.nl wordt geladen...
         </div>
 
         <script src="lib/require/require.js" data-main="app/main"></script>

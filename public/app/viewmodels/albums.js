@@ -4,16 +4,30 @@ define(['knockout', 'backend', 'viewmodels/shell', 'plugins/router', 'jquery', '
         var self = this;
         self.albums = ko.observableArray();
         self.albumClicked = function(album) {
-            router.navigate('albums/'+album.id);
+            router.navigate('albums/' + album.id);
         };
         self.createButtonClicked = function() {
             alert('TODO: create new');
         };
+
+
         self.editOrder = ko.observable(false);
+        
         self.editOrderButtonClicked = function() {
-            self.editOrder(!self.editOrder);
-            $('.gridmanager').gridmanager();
+            self.editOrder(!self.editOrder());
+            $('.gridmanager').sortable({
+                handle: '.handle'   
+            });
+            $('.gridmanager').disableSelection();
+            //$('.gridmanager').gridmanager();
         }
+        self.increaseOrderButtonClicked = function(item) {
+
+        };
+        self.decreaseOrderButtonClicked = function(item) {
+
+        };
+
         self.activate = function() {
             /*be.listAlbums()
             .then(function(data) {
@@ -39,7 +53,7 @@ define(['knockout', 'backend', 'viewmodels/shell', 'plugins/router', 'jquery', '
             },{
                 id: 2, 
                 count: 6,
-                title: 'Familieweekend 2014',
+                title: 'Familieweekend 2014 dit is een lange title',
                 thumbnailUrl: 'http://www.garethjmsaunders.co.uk/blueprint/placeholders/gif/square/span-11.gif'
             },{
                 id: 2, 

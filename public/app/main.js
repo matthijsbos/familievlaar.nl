@@ -9,7 +9,7 @@
         'jquery': '../lib/jquery/jquery-1.9.1',
         'jquery.ui': '../lib/jquery.ui/jquery-ui',
         'jquery.ui.widget': '../lib/jquery-file-upload/js/vendor/jquery.ui.widget',
-        'jquery.ui.touch-punch': '../lib/jquery-ui.touch-punch/jquery-ui.touch-punch',
+        'jquery.ui.touch-punch': '../lib/jquery.ui.touch-punch/js/jquery.ui.touch-punch',
         'backstretch': '../lib/backstretch/jquery.backstretch.min',
         'q': '../lib/q/q',
         'jquery.fileupload': '../lib/jquery-file-upload/js/jquery.file-upload',

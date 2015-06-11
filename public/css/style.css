@@ -12,3 +12,9 @@ div[class^="col"].condensed {
 .thumbnail.condensed {
     margin-bottom: 10px;
 }
+
+.overlay-icon {
+    position: absolute;
+    font-size: 2em;
+    padding: 1em;
+}
