@@ -10,7 +10,7 @@ Archive site for my familiy photo album
 4. Copy the `.env.example` file to `.env`.
 5. Modify all relevant lines in the `.env` file.
 6. Run `php artisan migrate` to run all database scripts.
-7. Create first user using command line tools: `php artisan user:create --help'.
+7. Create first user using command line tools: `php artisan user:create --help`.
 
 
 ## Development environment setup
