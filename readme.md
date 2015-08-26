@@ -17,5 +17,6 @@ Archive site for my familiy photo album
 1. Install the Homestead Vagrant box by following the instructions on http://laravel.com/docs/5.0/homestead
 2. Modify the `~/.homestead/Homestead.yaml` file so that it points to the 
    site installation folder
-
-
+3. Navigate into cloned folder.
+4. `vagrant up` 
+5. `vagrant ssh` in order to execute commands such as `php artisan migrate`. 
