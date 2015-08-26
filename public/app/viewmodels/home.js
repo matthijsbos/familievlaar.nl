@@ -3,7 +3,9 @@
     var viewModel = function () {
         var self = this;
 
-        this.albums = ko.observableArray();
+        this.isAdmin = ko.observable(false);
+        this.passwordSet = ko.observable(true);
+
         this.createAlbumButtonClicked = function() {
             router.navigate('/albums/create');
         };
@@ -13,6 +15,10 @@
         this.activate = function() {
             $.backstretch(['/img/bg2.jpg'],{ fade:1000});
             shell.transparentNavbar(true);
+            be.currentLogin().then(function(data) {
+                self.passwordSet(data.password_set);
+                self.isAdmin(data.admin);
+            });
         };
         this.deactivate = function() {
             $.backstretch(['/img/bg1.jpg'],{ fade:1000});

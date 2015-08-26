@@ -39,7 +39,9 @@
             </div>
         </div>
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div 
+                data-bind="visible: !passwordSet()"
+                class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">Wachtwoord instellen</h1>
                 </div>
@@ -49,13 +51,15 @@
                         uw e-mail te hoeven openen.
                     </p>
                     <p>
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-lock"></span> 
-                            Wachtwoord instellen</button>
+                        <a href="#user" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-lock"></span>
+                            Wachtwoord instellen</a>
                     </p>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div 
+                data-bind="visible: isAdmin"
+                class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">Admin menu</h1>
                 </div>

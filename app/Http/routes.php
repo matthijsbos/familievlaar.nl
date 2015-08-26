@@ -32,7 +32,7 @@ Route::group(array('prefix'=>'api/v1'), function() {
     Route::get( '/login', 'UserController@current');
     Route::post('/login', 'UserController@login');
     Route::get( '/setup', 'UserController@setup');
-    Route::post('/resetPassword', 'UserController@resetPassword');
+    Route::put( '/password', 'UserController@setPassword');
 
     // routes available to authenticated users only
     Route::group(array('before'=>'authenticated'), function() { 

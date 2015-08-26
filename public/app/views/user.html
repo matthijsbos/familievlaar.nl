@@ -1,0 +1,86 @@
+<div class="container">
+    <div class=row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Algemeen</h1>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <strong>E-mail adres</strong>
+                        <br />
+                        <span data-bind="text: email" />
+                    </p>
+                    <p>
+                        <strong>Administrator</strong>
+                        <br />
+                        <span data-bind="text: admin() ? 'Ja' : 'Nee'" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div 
+            class="col-md-4"
+            data-bind="visible: !passwordSet()">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Wachtwoord instellen</h1>
+                </div>
+                <div class="panel-body">
+                    <form data-bind="submit: setPasswordFormSubmitted">
+                        <div class="form-group">
+                            <label for="password">Wachtwoord</label>
+                            <input 
+                                name="password" 
+                                type="password" 
+                                class="form-control" 
+                                data-bind="value: password" />
+                        </div>
+                         <div class="form-group">
+                            <label for="confirmPassword">Herhaal wachtwoord</label>
+                            <input 
+                                name="confirmPassword"
+                                type="password" 
+                                class="form-control" 
+                                data-bind="value: confirmPassword" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Wachtwoord instellen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div 
+            class="col-md-4"
+            data-bind="visible: passwordSet">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Wachtwoord wijzigen</h1>
+                </div>
+                <div class="panel-body">
+                    <form data-bind="submit: changePasswordFormSubmitted">
+                        <div class="form-group">
+                            <label for="password">Wachtwoord</label>
+                            <input 
+                                name="password" 
+                                type="password" 
+                                class="form-control" 
+                                data-bind="value: password" />
+                        </div>
+                         <div class="form-group">
+                            <label for="confirmPassword">Herhaal wachtwoord</label>
+                            <input 
+                                name="confirmPassword"
+                                type="password" 
+                                class="form-control" 
+                                data-bind="value: confirmPassword" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Wachtwoord wijzigen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,20 +1,21 @@
-<?php
+<?php namespace App;
 
-class User extends Eloquent {
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'user';
+class User extends Model implements AuthenticatableContract {
 
-    protected $fillable = array('email', 'password', 'admin'); 
+    use Authenticatable;
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+    protected $table = 'user';
+    protected $hidden = ['password', 'login_token', 'remember_token'];
+    protected $appends = ['password_set'];
+    protected $casts = [
+        'admin' => 'boolean',
+    ];
+
+    public function getPasswordSetAttribute() {
+        return !empty($this->password);
+    }
 }

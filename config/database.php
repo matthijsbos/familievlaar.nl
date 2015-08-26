@@ -55,7 +55,7 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
             // Defaults for Homestead Vagrant VM
-			'host'      => env('DB_HOST', 'localhost:33060'),
+			'host'      => env('DB_HOST', 'localhost:3306'),
 			'database'  => env('DB_DATABASE', 'homestead'),
 			'username'  => env('DB_USERNAME', 'homestead'),
 			'password'  => env('DB_PASSWORD', 'secret'),

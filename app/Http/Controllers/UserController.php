@@ -2,6 +2,12 @@
 
 use Auth;
 use App;
+use Input;
+use Validator;
+use Response;
+
+use App\Commands\SetPasswordCommand;
+use App\Http\Requests\SetPasswordRequest;
 
 class UserController extends BaseController {
 
@@ -21,12 +27,13 @@ class UserController extends BaseController {
         if (Auth::check()) {
             $user = Auth::user();
             $data = array(
-                'id'=>$user->id,
-                'email'=>$user->email,
-                'admin'=>$user->admin
+                'id' => $user->id,
+                'email' => $user->email,
+                'admin' => $user->admin,
+                'passwordSet' => !empty($user->password),
             );
 
-            return Response::json($data);
+            return Response::json($user);
         } else {
             App::abort(401);
         }
@@ -41,6 +48,8 @@ class UserController extends BaseController {
     public function login() {
 
         $data = Input::only('email', 'password');
+
+        $data['email'] = trim($data['email']);
         
         $validator = Validator::make(
             $data,
@@ -91,6 +100,16 @@ class UserController extends BaseController {
         });
 
         return Response::make('', 204);
+    }
+
+
+    public function setPassword(SetPasswordRequest $request) {
+        $user = Auth::user();
+        $password = $request->input('password');
+        $command = new SetPasswordCommand($user, $password);
+        $this->dispatch($command);
+
+        return Response::json(null);
     }
 
 	public function create()

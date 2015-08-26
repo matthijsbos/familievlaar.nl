@@ -70,7 +70,7 @@ define(['jquery', 'q'], function($, Q) {
          */
         var ajaxJSON = function(url, options) {
             options = options || {};
-            options.dataType = "json";
+            //options.dataType = "json";
 
             /*
              * Create a new promise object in which the http request in 
@@ -147,15 +147,32 @@ define(['jquery', 'q'], function($, Q) {
         };
 
         /*
+         * helper function for json put requests. uses ajaxJSON internally.
+         */
+        var putJSON = function(url, data, options) {
+            options = options || {};
+            options.type = 'PUT';
+
+            if (data) {
+                options.data = JSON.stringify(data);
+                options.contentType = "application/json; charset=utf-8";
+            }
+
+            return ajaxJSON(url, options);
+        };
+
+
+        /*
          * Constants
          */
 
-        var API_PREFIX          = '/api/v1',
-            LOGIN_PATH          = API_PREFIX + '/login',
-            LOGOUT_PATH         = API_PREFIX + '/logout',
-            CREATE_ALBUM_PATH   = API_PREFIX + '/albums',
-            LIST_ALBUMS_PATH    = API_PREFIX + '/albums',
-            LIST_USERS_PATH     = API_PREFIX + '/users';
+        var API_PREFIX          = '/api/v1';
+        var LOGIN_PATH          = API_PREFIX + '/login';
+        var LOGOUT_PATH         = API_PREFIX + '/logout';
+        var CREATE_ALBUM_PATH   = API_PREFIX + '/albums';
+        var LIST_ALBUMS_PATH    = API_PREFIX + '/albums';
+        var LIST_USERS_PATH     = API_PREFIX + '/users';
+        var PASSWORD_PATH       = API_PREFIX + '/password';
 
         this.login = function(email, password) {
             var data = { email:email, password:password };
@@ -173,9 +190,8 @@ define(['jquery', 'q'], function($, Q) {
             return postJSON(LOGOUT_PATH);
         };
 
-        this.resetPassword = function(email) {
-            var data = { email: email };
-            return postJSON(API_PREFIX + '/resetPassword', data);
+        this.setPassword = function(password) {
+            return putJSON(PASSWORD_PATH, { password: password });
         };
 
         this.createAlbum = function(title) {
@@ -205,6 +221,8 @@ define(['jquery', 'q'], function($, Q) {
         this.getUser = function(userId) {
             return getJSON(API_PREFIX + '/users/' + userId);
         };
+
+
     };
 
     return new module();

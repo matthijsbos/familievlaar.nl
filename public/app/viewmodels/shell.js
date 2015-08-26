@@ -64,25 +64,6 @@
 
             $.backstretch(['/img/bg1.jpg'],{fade:1000});
 
-            be.currentLogin()
-                .then(function(data) {
-                    self.login(data); 
-                })
-                .then(null, function(error) {
-                    /* error */
-                    self.login(null);
-                    /*
-                     * catch authentication error 401 since we manually want
-                     * to handle this type of exceptions and redirect to
-                     * the login page.
-                     */
-                    if (error instanceof be.AuthenticationError) {
-                        //router.navigate('login');
-                    } else {
-                        self.handleError(error);
-                    }
-                });
-
             /*
              * Register durandal app routes
              */
@@ -126,6 +107,7 @@
                 { route: 'users',        title: 'Gebruikers',       moduleId: 'viewmodels/listUsers' },
                 { route: 'users/create', title: 'Nieuwe gebruiker', moduleId: 'viewmodels/createUser' },
                 { route: 'users/:id',    title: 'Gebruiker',        moduleId: 'viewmodels/showUser' },
+                { route: 'user',         title: 'Gebruiker',        moduleId: 'viewmodels/user' },
             ]).buildNavigationModel();
 
             /*
@@ -134,8 +116,27 @@
             router.on('router:route:activating', function() {
                 $('#menu').collapse('hide');
             });
-            
-            return router.activate();
+
+
+            return router.activate().then(function(data) {
+                return be.currentLogin();
+            }).then(function(data) {
+                self.login(data); 
+            })
+            .then(null, function(error) {
+                /* error */
+                self.login(null);
+                /*
+                 * catch authentication error 401 since we manually want
+                 * to handle this type of exceptions and redirect to
+                 * the login page.
+                 */
+                if (error instanceof be.AuthenticationError) {
+                    router.navigate('login');
+                } else {
+                    self.handleError(error);
+                }
+            });
         }
 
     };

@@ -17,10 +17,13 @@ class CreateUserTable extends Migration {
             $table->timestamps();
             $table->string('email')
                 ->unqiue();
-            $table->string('password');
+            $table->string('password')
+                ->nullable();
             $table->boolean('admin')
                 ->default(false);
-            $table->string('token');
+            $table->string('login_token');
+            $table->string('remember_token')
+                ->nullable();
         });
 	}
 
